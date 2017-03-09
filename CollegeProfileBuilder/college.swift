@@ -15,6 +15,8 @@ class college{
     
     init(name: String, location: String, population: String){
         self.name = name
+        self.location = location
+        self.population = population
     }
 }
 
