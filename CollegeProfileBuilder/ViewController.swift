@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet var CollegeProfile: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
