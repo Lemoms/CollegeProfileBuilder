@@ -23,6 +23,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         colleges = [collegeOne, collegeTwo, collegeThree]
     }
 
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+    }
+    func tableview(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId")
+        let collegeProfile = colleges[indexPath.row]
+        cell?.textLabel?.text = collegeProfile.name
+        cell?.textLabel?.text = collegeProfile.location
+        cell?.textLabel?.text = collegeProfile.population
+        return cell!
+        
+    }
+    func table
 
 }
