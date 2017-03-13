@@ -35,6 +35,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell!
         
     }
-    func table
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+        if editingStyle == .delete{
+            colleges.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
 
+}
 }
