@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KO8-8Z-GKE" id="o7i-Iy-FYY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -43,7 +43,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dCi-nJ-Yeo"/>
+                    <navigationItem key="navigationItem" id="dCi-nJ-Yeo">
+                        <barButtonItem key="leftBarButtonItem" title="+" id="Dop-24-kWX">
+                            <connections>
+                                <action selector="TapTheButton:" destination="BYZ-38-t0r" id="g7I-MF-0ZO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="CollegeProfile" destination="Hoe-rH-63a" id="O2W-dW-3gS"/>
                     </connections>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarButtonItem {
     
     @IBOutlet var CollegeProfile: UITableView!
     
@@ -42,4 +42,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
 }
+    @IBAction func TapTheButton(_ sender: Any) {
+        let alert = UIAlertController(title: "add college", message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        let addAction = UIAlertAction(title: "add", style: .default) {
+            (action) in
+            let collegeTextField = alert.textFields![0] as UITextField
+            self.colleges.append(collegeTextField.text!)
+            self.tableView.reloadData() }
+        alert.addAction(addAction)
+        self.presentedViewController(alert, animated: true, completion: nil)
+        }
+
+
 }
