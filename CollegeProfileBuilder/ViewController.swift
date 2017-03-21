@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import SafariServices
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarButtonItem {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarButtonItem, SFSafariViewControllerDelegate {
     
     @IBOutlet var CollegeProfile: UITableView!
+    
+    var urlString = "HTTP://google.com"
     
     var colleges: [college] = []
     
@@ -42,18 +45,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
 }
-    @IBAction func TapTheButton(_ sender: Any) {
+    @IBAction func TapTheButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "add college", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alert.addTextField{
+            (textField) in textField.placeholder = "add college here"
+        }
         alert.addAction(cancelAction)
         let addAction = UIAlertAction(title: "add", style: .default) {
             (action) in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.colleges.append(collegeTextField.text!)
-            self.tableView.reloadData() }
+            self.CollegeProfile.append(collegeTextField.text!)
+            }
         alert.addAction(addAction)
-        self.presentedViewController(alert, animated: true, completion: nil)
-        }
+        self.presentedViewController
+    }
+    
+    @IBAction func editButton(_ sender: UIBarButtonItem) {
+    }
+    
+   
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    @IBAction func doneButton(_ sender: UIButton) {
+        let url = NSURL(string: urlString)!
+        let svc = SFSafariViewController(url: url as URL)
+        present(svc, animated: true, completion: nil)
+    }
 
 
 }
