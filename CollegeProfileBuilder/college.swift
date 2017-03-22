@@ -12,6 +12,7 @@ class college{
     var name: String = ""
     var location: String = ""
     var population: String = ""
+    var collegeTextField: String = ""
     
     init(name: String, location: String, population: String){
         self.name = name

@@ -12,6 +12,7 @@ import SafariServices
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarButtonItem, SFSafariViewControllerDelegate {
     
     @IBOutlet var CollegeProfile: UITableView!
+    @IBOutlet var editButton: UIBarButtonItem!
     
     var urlString = "HTTP://google.com"
     
@@ -26,9 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         colleges = [collegeOne, collegeTwo, collegeThree]
     }
 
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return colleges.count
     }
+    
+    
     func tableview(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellId")
         let collegeProfile = colleges[indexPath.row]
@@ -38,6 +42,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell!
         
     }
+    
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == .delete{
             colleges.remove(at: indexPath.row)
@@ -45,6 +51,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
 }
+    
+    
     @IBAction func TapTheButton(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "add college", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
@@ -55,13 +63,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let addAction = UIAlertAction(title: "add", style: .default) {
             (action) in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.CollegeProfile.append(collegeTextField.text!)
+            self.colleges.append(collegeTextField.text!)
             }
         alert.addAction(addAction)
-        self.presentedViewController
+    
     }
     
-    @IBAction func editButton(_ sender: UIBarButtonItem) {
+    @IBAction func editWithButton(_ sender: UIBarButtonItem) {
+        
     }
     
    
@@ -69,6 +78,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
     
     @IBAction func doneButton(_ sender: UIButton) {
         let url = NSURL(string: urlString)!
