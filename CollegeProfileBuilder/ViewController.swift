@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIBarButtonItem, SFSafariViewControllerDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFSafariViewControllerDelegate {
     
     @IBOutlet var CollegeProfile: UITableView!
     @IBOutlet var editButton: UIBarButtonItem!
@@ -21,9 +21,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let collegeOne = college(name: "SCAD", location: "Savanah, Georgia", population: "11,693")
-        let collegeTwo = college(name: "harper", location: "Cook County, Illinois", population: "16,060")
-        let collegeThree = college(name: "Tribecca Flash Point", location: "Chicago, Illinois", population: "1,758")
+        let collegeOne = college(name: "SCAD", location: "Savanah, Georgia", population: "11,693", collegeTextField: "add college")
+        let collegeTwo = college(name: "harper", location: "Cook County, Illinois", population: "16,060", collegeTextField: "add college")
+        let collegeThree = college(name: "Tribecca Flash Point", location: "Chicago, Illinois", population: "1,758", collegeTextField: "add college")
         colleges = [collegeOne, collegeTwo, collegeThree]
     }
 
@@ -57,7 +57,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let alert = UIAlertController(title: "add college", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
         alert.addTextField{
-            (textField) in textField.placeholder = "add college here"
+            (textField) in
+            textField.placeholder = "add college here"
         }
         alert.addAction(cancelAction)
         let addAction = UIAlertAction(title: "add", style: .default) {
@@ -70,7 +71,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func editWithButton(_ sender: UIBarButtonItem) {
-        
+        editButton.tag = 0
     }
     
    
