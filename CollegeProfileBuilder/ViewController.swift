@@ -14,9 +14,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var CollegeProfile: UITableView!
     @IBOutlet var editButton: UIBarButtonItem!
     
-    var urlString = "HTTP://google.com"
+    var urlString = "http://goforward.harpercollege.edu/"
     
     var colleges: [college] = []
+    
     
 
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let collegeTwo = college(name: "harper", location: "Cook County, Illinois", population: "16,060", collegeTextField: "add college")
         let collegeThree = college(name: "Tribecca Flash Point", location: "Chicago, Illinois", population: "1,758", collegeTextField: "add college")
         colleges = [collegeOne, collegeTwo, collegeThree]
+        editButton.tag = 0
     }
 
     
@@ -64,14 +66,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let addAction = UIAlertAction(title: "add", style: .default) {
             (action) in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.colleges.append(collegeTextField.text!)
+            self.colleges.append(college(collegeTextField: collegeTextField.text!))
+            self.CollegeProfile.reloadData()
             }
-        alert.addAction(addAction)
-    
+    alert.addAction(addAction)
     }
     
     @IBAction func editWithButton(_ sender: UIBarButtonItem) {
-        editButton.tag = 0
+        if sender.tag == 0 {
+            CollegeProfile.isEditing = true
+            sender.tag = 1
+        }
+        else {
+            CollegeProfile.isEditing = false
+            sender.tag = 0
+        }
     }
     
    
@@ -80,11 +89,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return true
     }
     
+    func tableView(_ tableView: UITableView, movePowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let college = colleges[sourceIndexPath.row]
+        colleges.remove(at: sourceIndexPath.row)
+        colleges.insert(college, at: destinationIndexPath.row)
+    }
+    
     
     @IBAction func doneButton(_ sender: UIButton) {
         let url = NSURL(string: urlString)!
         let svc = SFSafariViewController(url: url as URL)
         present(svc, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc = segue.destination as! DetailViewController
+        let index = CollegeProfile.indexPathForRow
     }
 
 

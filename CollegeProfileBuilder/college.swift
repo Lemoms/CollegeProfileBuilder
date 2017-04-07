@@ -14,11 +14,13 @@ class college{
     var population: String = ""
     var collegeTextField: String = ""
     
-    init(name: String, location: String, population: String, collegeTextField: String){
+init(name: String, location: String, population: String, collegeTextField: String){
         self.name = name
         self.location = location
         self.population = population
         self.collegeTextField = collegeTextField
     }
+    
+   
 }
 

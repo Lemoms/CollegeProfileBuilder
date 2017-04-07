@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C207B9331E84147E005AC3C2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C207B9321E84147E005AC3C2 /* DetailViewController.swift */; };
 		C271EA531E71AC8300A9FAAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271EA521E71AC8300A9FAAA /* AppDelegate.swift */; };
 		C271EA551E71AC8300A9FAAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271EA541E71AC8300A9FAAA /* ViewController.swift */; };
 		C271EA581E71AC8300A9FAAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C271EA561E71AC8300A9FAAA /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C207B9321E84147E005AC3C2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		C271EA4F1E71AC8300A9FAAA /* CollegeProfileBuilder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollegeProfileBuilder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C271EA521E71AC8300A9FAAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C271EA541E71AC8300A9FAAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 			children = (
 				C271EA521E71AC8300A9FAAA /* AppDelegate.swift */,
 				C271EA541E71AC8300A9FAAA /* ViewController.swift */,
+				C207B9321E84147E005AC3C2 /* DetailViewController.swift */,
 				C271EA641E71AE9C00A9FAAA /* college.swift */,
 				C271EA561E71AC8300A9FAAA /* Main.storyboard */,
 				C271EA591E71AC8300A9FAAA /* Assets.xcassets */,
@@ -143,6 +146,7 @@
 				C271EA551E71AC8300A9FAAA /* ViewController.swift in Sources */,
 				C271EA651E71AE9C00A9FAAA /* college.swift in Sources */,
 				C271EA531E71AC8300A9FAAA /* AppDelegate.swift in Sources */,
+				C207B9331E84147E005AC3C2 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +310,7 @@
 				C271EA631E71AC8300A9FAAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
