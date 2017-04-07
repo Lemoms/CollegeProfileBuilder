@@ -105,6 +105,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! DetailViewController
         let index = CollegeProfile.indexPathForRow
+        dvc.college = colleges[index!]
     }
 
 
