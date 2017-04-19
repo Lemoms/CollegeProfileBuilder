@@ -21,6 +21,9 @@ init(name: String, location: String, population: String, collegeTextField: Strin
         self.collegeTextField = collegeTextField
     }
     
+    init(name: String){
+        self.name = name
+    }
    
 }
 

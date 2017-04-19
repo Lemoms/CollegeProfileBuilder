@@ -7,14 +7,15 @@
 //
 
 import UIKit
-import SafariServices
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SFSafariViewControllerDelegate {
+
+class ViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet var CollegeProfile: UITableView!
+    
     @IBOutlet var editButton: UIBarButtonItem!
     
-    var urlString = "http://goforward.harpercollege.edu/"
+    
     
     var colleges: [college] = []
     
@@ -27,12 +28,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let collegeThree = college(name: "Tribecca Flash Point", location: "Chicago, Illinois", population: "1,758", collegeTextField: "add college")
         colleges = [collegeOne, collegeTwo, collegeThree]
         editButton.tag = 0
+        
     }
 
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return colleges.count
     }
+    
     
     
     func tableview(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell{
@@ -46,6 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
         if editingStyle == .delete{
             colleges.remove(at: indexPath.row)
@@ -53,6 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
 
 }
+    
     
     
     @IBAction func TapTheButton(_ sender: UIBarButtonItem) {
@@ -66,13 +72,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let addAction = UIAlertAction(title: "add", style: .default) {
             (action) in
             let collegeTextField = alert.textFields![0] as UITextField
-            self.colleges.append(college(collegeTextField: collegeTextField.text!))
+            self.colleges.append(college(name: collegeTextField.text!))
             self.CollegeProfile.reloadData()
             }
     alert.addAction(addAction)
     }
     
-    @IBAction func editWithButton(_ sender: UIBarButtonItem) {
+    
+    
+    @IBAction func EditButton(_ sender: UIBarButtonItem) {
         if sender.tag == 0 {
             CollegeProfile.isEditing = true
             sender.tag = 1
@@ -83,11 +91,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    
    
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Bool {
+   
+    
+    
+    private func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    
     
     func tableView(_ tableView: UITableView, movePowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
         let college = colleges[sourceIndexPath.row]
@@ -96,17 +110,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    @IBAction func doneButton(_ sender: UIButton) {
-        let url = NSURL(string: urlString)!
-        let svc = SFSafariViewController(url: url as URL)
-        present(svc, animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! DetailViewController
-        let index = CollegeProfile.indexPathForRow
-        dvc.college = colleges[index!]
+        let index = CollegeProfile.indexPathForSelectedRow?.row
+        colleges[index!] = dvc.college
     }
-
+    
 
 }

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SafariServices
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, SFSafariViewControllerDelegate {
+    
     
     @IBOutlet var nameTextField: UITextField!
     
@@ -18,12 +20,13 @@ class DetailViewController: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
     
+    var urlString = "httpvargovarward.harpercolvare.edu/"
+    
     let college : college! = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
         nameTextField.text = college.name
         locationTextField.text = college.location
@@ -31,15 +34,32 @@ class DetailViewController: UIViewController {
         
     }
 
+    
+    
     @IBAction func saveAtTime(_ sender: UIButton) {
        college.name = nameTextField.text!
         college.location = locationTextField.text!
         college.population = populationTextField.text!
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    }
+    
+    
+
+    @IBAction func MapButton(_ sender: UIButton) {
+       performSegue(withIdentifier: "mapView", sender: self)
+    }
+    
+    
+    
+    @IBAction func webButton(_ sender: UIButton) {
+        let url = NSURL(string: urlString)!
+        let svc = SFSafariViewController(url: url as URL)
+        present(svc, animated: true, completion: nil)
     }
 
 

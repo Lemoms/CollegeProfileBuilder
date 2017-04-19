@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m5j-NV-0Pc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="m5j-NV-0Pc">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,7 +51,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="edit" id="RkJ-Ob-eZa">
                             <connections>
-                                <action selector="editButton:" destination="BYZ-38-t0r" id="nZM-hz-iAi"/>
+                                <action selector="EditButton:" destination="BYZ-38-t0r" id="vF8-uh-Eee"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="138.98050974512745"/>
+            <point key="canvasLocation" x="956" y="139"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="hVe-rp-CdV">
@@ -103,27 +103,77 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeU-V8-3Tr">
-                                <rect key="frame" x="164" y="465" width="46" height="30"/>
+                                <rect key="frame" x="169" y="465" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="saveAtTime:" destination="g6V-gq-aCH" eventType="touchUpInside" id="DSw-QF-WC9"/>
-                                    <action selector="saveButton:" destination="g6V-gq-aCH" eventType="touchUpInside" id="oED-U7-XU5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dem-7c-84l">
+                                <rect key="frame" x="172" y="516" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="map"/>
+                                <connections>
+                                    <action selector="MapButton:" destination="g6V-gq-aCH" eventType="touchUpInside" id="iGk-2F-5LC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piB-ni-Qrz">
+                                <rect key="frame" x="154" y="560" width="67" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="web page"/>
+                                <connections>
+                                    <action selector="webButton:" destination="g6V-gq-aCH" eventType="touchUpInside" id="bXK-K4-VR5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="cityTextField" destination="9ot-Lr-NCr" id="XAO-Rn-Q9I"/>
                         <outlet property="imageView" destination="kaB-h1-uzu" id="X8i-58-YxW"/>
+                        <outlet property="locationTextField" destination="9ot-Lr-NCr" id="Dfn-d5-qsw"/>
                         <outlet property="nameTextField" destination="LPc-z4-Wdd" id="lzt-KL-iW3"/>
                         <outlet property="populationTextField" destination="u5l-fS-iJi" id="VK6-Pd-L53"/>
+                        <segue destination="m23-sM-OoP" kind="push" identifier="mapView" id="xi4-Dn-QGK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kfI-s8-j1o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="139"/>
+            <point key="canvasLocation" x="1615" y="139"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="Vah-k6-Ju7">
+            <objects>
+                <viewController id="m23-sM-OoP" customClass="MapViewController" customModule="CollegeProfileBuilder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tsx-f1-Z20"/>
+                        <viewControllerLayoutGuide type="bottom" id="416-Ma-L0U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r6L-qO-SDc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="94f-R2-HSq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AIW-te-pyt">
+                        <barButtonItem key="rightBarButtonItem" title="back" id="gp4-gm-bi3">
+                            <connections>
+                                <action selector="MapButton:" destination="m23-sM-OoP" id="1d4-IU-7wl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CollegeMap" destination="94f-R2-HSq" id="rYX-7p-Tlb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5c5-tK-gGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2300" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GhW-J7-fPI">
@@ -141,7 +191,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="taZ-dj-93m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="139"/>
+            <point key="canvasLocation" x="273" y="139"/>
         </scene>
     </scenes>
 </document>
